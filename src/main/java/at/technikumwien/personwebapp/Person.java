@@ -1,5 +1,6 @@
 package at.technikumwien.personwebapp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,6 +33,7 @@ public class Person {
     @Column(nullable = false)
     private boolean active;
 
+    @JsonIgnore
     public String getName()
     {
         return firstName + " " + lastName;

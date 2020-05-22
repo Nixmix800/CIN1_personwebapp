@@ -24,7 +24,7 @@ public class DBInitializer {
                             "Markus",
                             "Mustermann",
                             LocalDate.of(1990, 1, 1),
-                            true
+                            false
                     ),
                     new Person(
                             null,

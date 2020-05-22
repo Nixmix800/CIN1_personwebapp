@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Configuration
 public class DBInitializer {
@@ -15,15 +16,25 @@ public class DBInitializer {
 
     @EventListener(ApplicationReadyEvent.class)
     public void handleApplicationEvent() {
-        var person = new Person(
-                null,
-                Sex.MALE,
-                "Markus",
-                "Mustermann",
-                LocalDate.of(1990, 1, 1),
-                true
+        personRepository.saveAll(
+                List.of(
+                    new Person(
+                            null,
+                            Sex.MALE,
+                            "Markus",
+                            "Mustermann",
+                            LocalDate.of(1990, 1, 1),
+                            true
+                    ),
+                    new Person(
+                            null,
+                            Sex.FEMALE,
+                            "Martina",
+                            "Musterfrau",
+                            LocalDate.of(1998, 5, 5),
+                            true
+                    )
+                )
         );
-
-        personRepository.save(person);
     }
 }
